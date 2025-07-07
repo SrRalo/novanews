@@ -71,7 +71,10 @@ export default defineConfig({
     icon(),
   ],
   vite: {
-    plugins: [tailwindcss() as any],
+    plugins: [
+      // @ts-ignore - Tipo incompatible entre versiones de Vite
+      tailwindcss()
+    ],
   },
   server: {
     port: 1234,
