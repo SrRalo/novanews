@@ -7,7 +7,7 @@ import fs from 'fs'
 async function generateTestUrls() {
   console.log('🔗 Generando URLs para testing Open Graph...\n')
   
-  const baseUrl = 'https://novanews-mu.vercel.app'
+  const baseUrl = 'https://novanews1.vercel.app'
   
   // Lista manual de posts (basada en la estructura que vimos)
   const posts = [

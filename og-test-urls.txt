@@ -1,20 +1,20 @@
 # URLs para Testing Open Graph - NovaNews
 
 ## Posts
-https://novanews-mu.vercel.app/blog/blockchain-2025-casos-de-usos-reales-aparte-de-las-criptomonedas/
-https://novanews-mu.vercel.app/blog/ia-generativa-guia-completa-de-tecnologias-y-aplicaciones-practicas-en-2025/
-https://novanews-mu.vercel.app/blog/top-herramientas-gratuitas-de-inteligencia-artificial/
+https://novanews1.vercel.app/blog/blockchain-2025-casos-de-usos-reales-aparte-de-las-criptomonedas/
+https://novanews1.vercel.app/blog/ia-generativa-guia-completa-de-tecnologias-y-aplicaciones-practicas-en-2025/
+https://novanews1.vercel.app/blog/top-herramientas-gratuitas-de-inteligencia-artificial/
 
 ## Debug Pages
-https://novanews-mu.vercel.app/debug/banner-preview/
-https://novanews-mu.vercel.app/debug/og-test/
+https://novanews1.vercel.app/debug/banner-preview/
+https://novanews1.vercel.app/debug/og-test/
 
 ## Facebook Sharing Debugger
-https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fnovanews-mu.vercel.app%2Fblog%2Fblockchain-2025-casos-de-usos-reales-aparte-de-las-criptomonedas%2F
-https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fnovanews-mu.vercel.app%2Fblog%2Fia-generativa-guia-completa-de-tecnologias-y-aplicaciones-practicas-en-2025%2F
-https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fnovanews-mu.vercel.app%2Fblog%2Ftop-herramientas-gratuitas-de-inteligencia-artificial%2F
+https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fnovanews1.vercel.app%2Fblog%2Fblockchain-2025-casos-de-usos-reales-aparte-de-las-criptomonedas%2F
+https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fnovanews1.vercel.app%2Fblog%2Fia-generativa-guia-completa-de-tecnologias-y-aplicaciones-practicas-en-2025%2F
+https://developers.facebook.com/tools/debug/?q=https%3A%2F%2Fnovanews1.vercel.app%2Fblog%2Ftop-herramientas-gratuitas-de-inteligencia-artificial%2F
 
 ## Twitter Card Validator
-https://cards-dev.twitter.com/validator?url=https%3A%2F%2Fnovanews-mu.vercel.app%2Fblog%2Fblockchain-2025-casos-de-usos-reales-aparte-de-las-criptomonedas%2F
-https://cards-dev.twitter.com/validator?url=https%3A%2F%2Fnovanews-mu.vercel.app%2Fblog%2Fia-generativa-guia-completa-de-tecnologias-y-aplicaciones-practicas-en-2025%2F
-https://cards-dev.twitter.com/validator?url=https%3A%2F%2Fnovanews-mu.vercel.app%2Fblog%2Ftop-herramientas-gratuitas-de-inteligencia-artificial%2F
+https://cards-dev.twitter.com/validator?url=https%3A%2F%2Fnovanews1.vercel.app%2Fblog%2Fblockchain-2025-casos-de-usos-reales-aparte-de-las-criptomonedas%2F
+https://cards-dev.twitter.com/validator?url=https%3A%2F%2Fnovanews1.vercel.app%2Fblog%2Fia-generativa-guia-completa-de-tecnologias-y-aplicaciones-practicas-en-2025%2F
+https://cards-dev.twitter.com/validator?url=https%3A%2F%2Fnovanews1.vercel.app%2Fblog%2Ftop-herramientas-gratuitas-de-inteligencia-artificial%2F

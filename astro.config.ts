@@ -20,7 +20,7 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  site: 'https://novanews-mu.vercel.app',
+  site: 'https://novanews1.vercel.app',
   integrations: [
     expressiveCode({
       themes: ['github-light', 'github-dark'],

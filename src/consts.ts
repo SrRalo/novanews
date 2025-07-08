@@ -4,7 +4,7 @@ export const SITE: Site = {
   title: 'novanews',
   description:
     'Mi blog personal sobre tecnología y desarrollo',
-  href: 'https://novanews-mu.vercel.app/',
+  href: 'https://novanews1.vercel.app/',
   author: 'srr',
   locale: 'en-US',
   featuredPostCount: 2,
