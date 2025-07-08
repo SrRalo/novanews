@@ -1,0 +1,140 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import { SITE } from '@/consts'
+
+const posts = await getCollection('blog')
+---
+
+<Layout>
+  <div style="max-width: 900px; margin: 2rem auto; padding: 0 1rem; font-family: system-ui;">
+    <h1>🖼️ Preview Banners para Redes Sociales</h1>
+    <p>Así es como se verán tus posts cuando se compartan en WhatsApp, Facebook, Twitter, etc.</p>
+    
+    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+      <h2>✅ Especificaciones Técnicas</h2>
+      <ul>
+        <li><strong>Tamaño:</strong> 1200x630 píxeles (aspect ratio 1.91:1)</li>
+        <li><strong>Formato:</strong> JPG optimizado</li>
+        <li><strong>Peso:</strong> Menos de 1MB cada imagen</li>
+        <li><strong>Calidad:</strong> 85% para balance perfecto entre calidad y tamaño</li>
+      </ul>
+    </div>
+
+    {posts.map((post) => {
+      const postUrl = `${SITE.href}blog/${post.id}/`
+      const imageUrl = post.data.image?.src 
+        ? `${SITE.href}${post.data.image.src}?v=2` 
+        : `${SITE.href}/static/1200x630.png?v=2`
+      
+      return (
+        <div style="border: 1px solid #dee2e6; border-radius: 12px; overflow: hidden; margin: 2rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          
+          <!-- Simulación de WhatsApp -->
+          <div style="background: #25d366; color: white; padding: 0.5rem 1rem; font-size: 0.9em; font-weight: bold;">
+            📱 WhatsApp Preview
+          </div>
+          <div style="padding: 1rem; background: white;">
+            <img 
+              src={imageUrl} 
+              alt={post.data.title} 
+              style="width: 100%; max-width: 400px; border-radius: 8px; margin-bottom: 0.5rem;" 
+            />
+            <div style="font-weight: bold; font-size: 1rem; margin-bottom: 0.3rem; color: #1976d2;">
+              {post.data.title}
+            </div>
+            <div style="color: #666; font-size: 0.9em; margin-bottom: 0.3rem;">
+              {post.data.description}
+            </div>
+            <div style="color: #999; font-size: 0.8em;">
+              {new URL(postUrl).hostname}
+            </div>
+          </div>
+          
+          <!-- Simulación de Facebook -->
+          <div style="background: #1877f2; color: white; padding: 0.5rem 1rem; font-size: 0.9em; font-weight: bold;">
+            📘 Facebook Preview
+          </div>
+          <div style="padding: 1rem; background: #f0f2f5;">
+            <div style="background: white; border-radius: 8px; overflow: hidden;">
+              <img 
+                src={imageUrl} 
+                alt={post.data.title} 
+                style="width: 100%; max-height: 250px; object-fit: cover;" 
+              />
+              <div style="padding: 1rem;">
+                <div style="color: #65676b; font-size: 0.8em; text-transform: uppercase; margin-bottom: 0.3rem;">
+                  {new URL(postUrl).hostname}
+                </div>
+                <div style="font-weight: bold; font-size: 1.1rem; margin-bottom: 0.3rem; color: #1c1e21;">
+                  {post.data.title}
+                </div>
+                <div style="color: #65676b; font-size: 0.9em;">
+                  {post.data.description}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Simulación de Twitter -->
+          <div style="background: #1da1f2; color: white; padding: 0.5rem 1rem; font-size: 0.9em; font-weight: bold;">
+            🐦 Twitter Preview
+          </div>
+          <div style="padding: 1rem; background: white;">
+            <div style="border: 1px solid #cfd9de; border-radius: 16px; overflow: hidden; max-width: 500px;">
+              <img 
+                src={imageUrl} 
+                alt={post.data.title} 
+                style="width: 100%; aspect-ratio: 1.91; object-fit: cover;" 
+              />
+              <div style="padding: 0.75rem;">
+                <div style="color: #536471; font-size: 0.9em; margin-bottom: 0.2rem;">
+                  {new URL(postUrl).hostname}
+                </div>
+                <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #0f1419;">
+                  {post.data.title}
+                </div>
+                <div style="color: #536471; font-size: 0.9em;">
+                  {post.data.description}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Información técnica -->
+          <details style="padding: 1rem; background: #f8f9fa;">
+            <summary style="cursor: pointer; font-weight: bold; margin-bottom: 0.5rem;">🔧 Detalles Técnicos</summary>
+            <div style="font-family: monospace; font-size: 0.85em;">
+              <p><strong>URL del Post:</strong> <a href={postUrl} target="_blank">{postUrl}</a></p>
+              <p><strong>URL de Imagen:</strong> <code>{imageUrl}</code></p>
+              <p><strong>Título:</strong> {post.data.title}</p>
+              <p><strong>Descripción:</strong> {post.data.description}</p>
+            </div>
+          </details>
+        </div>
+      )
+    })}
+
+    <div style="background: #e7f3ff; padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+      <h2>🚀 Cómo Forzar Actualización del Caché</h2>
+      <ol>
+        <li><strong>Facebook:</strong> Usa el <a href="https://developers.facebook.com/tools/debug/" target="_blank">Sharing Debugger</a> y haz clic en "Scrape Again"</li>
+        <li><strong>WhatsApp:</strong> Envía el enlace a ti mismo primero, luego comparte</li>
+        <li><strong>Twitter:</strong> Usa el <a href="https://cards-dev.twitter.com/validator" target="_blank">Card Validator</a></li>
+        <li><strong>LinkedIn:</strong> Usa el <a href="https://www.linkedin.com/post-inspector/" target="_blank">Post Inspector</a></li>
+      </ol>
+    </div>
+
+    <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; margin: 2rem 0;">
+      <h2>⚡ Optimizaciones Aplicadas</h2>
+      <ul>
+        <li>✅ Imágenes redimensionadas a 1200x630px exacto</li>
+        <li>✅ Convertidas a JPG para mejor compresión</li>
+        <li>✅ Optimizadas a menos de 1MB cada una</li>
+        <li>✅ Cache busting con parámetro ?v=2</li>
+        <li>✅ Meta tags Open Graph completos</li>
+        <li>✅ Twitter Cards configurados</li>
+      </ul>
+    </div>
+  </div>
+</Layout>

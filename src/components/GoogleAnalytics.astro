@@ -1,0 +1,18 @@
+---
+const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX' // Reemplazar con tu ID real
+
+// Solo cargar en producción
+const isProduction = import.meta.env.PROD
+---
+
+{isProduction && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+  </>
+)}

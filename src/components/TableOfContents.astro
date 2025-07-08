@@ -1,0 +1,38 @@
+---
+interface Props {
+  headings: Array<{
+    depth: number
+    slug: string
+    text: string
+  }>
+}
+
+const { headings } = Astro.props
+const tocItems = headings.filter(h => h.depth <= 3)
+---
+
+{tocItems.length > 0 && (
+  <nav class="toc bg-muted/30 rounded-lg p-4 mb-8" aria-label="Table of contents">
+    <h2 class="text-lg font-semibold mb-3 flex items-center gap-2">
+      📚 Tabla de Contenidos
+    </h2>
+    <ul class="space-y-1">
+      {tocItems.map((heading) => (
+        <li class={`ml-${(heading.depth - 1) * 4}`}>
+          <a 
+            href={`#${heading.slug}`}
+            class="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+)}
+
+<style>
+  .toc a:hover {
+    text-decoration: underline;
+  }
+</style>

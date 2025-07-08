@@ -302,3 +302,14 @@ export async function getTOCSections(postId: string): Promise<TOCSection[]> {
 
   return sections
 }
+
+export async function getMostVisitedPost(): Promise<CollectionEntry<'blog'> | null> {
+  const posts = await getAllPosts()
+  
+  // Por ahora, simulamos que el post más visitado es el más reciente
+  // En el futuro podrías integrar Google Analytics o similar
+  if (posts.length === 0) return null
+  
+  // Devuelve el primer post (más reciente) como "más visitado"
+  return posts[0]
+}
