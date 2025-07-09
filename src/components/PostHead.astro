@@ -20,12 +20,20 @@ const postImageMap: Record<string, string> = {
   'top-herramientas-gratuitas-de-inteligencia-artificial': '/og-images/herramientas-ia-banner.jpg'
 }
 
-// Construir URL correcta para la imagen del post
+// Construir URL correcta para la imagen del post con cache busting
 let postImageUrl = defaultImage.toString()
 const postSlug = post.id.replace('/index', '')
-if (postImageMap[postSlug]) {
-  postImageUrl = `${SITE.href.replace(/\/$/, '')}${postImageMap[postSlug]}`
+const cacheBuster = Date.now()
+
+// Prioridad: 1) Imagen en frontmatter, 2) Imagen en mapeo estático, 3) Imagen por defecto
+if (post.data.image?.src) {
+  // Si el post tiene una imagen definida en el frontmatter, usarla
+  postImageUrl = `${SITE.href.replace(/\/$/, '')}${post.data.image.src}?v=${cacheBuster}`
+} else if (postImageMap[postSlug]) {
+  // Si no, usar la imagen del mapeo estático
+  postImageUrl = `${SITE.href.replace(/\/$/, '')}${postImageMap[postSlug]}?v=${cacheBuster}`
 }
+// Si no hay ninguna de las anteriores, usar la imagen por defecto (ya está asignada)
 
 const author =
   post.data.authors && post.data.authors.length > 0
@@ -88,9 +96,7 @@ const author =
     "@type": "Article",
     "headline": title,
     "description": description,
-    "image": post?.data?.image?.src 
-      ? `${SITE.href}${post.data.image.src}`
-      : `${SITE.href}/static/1200x630.png?v=2`,
+    "image": postImageUrl,
     "author": {
       "@type": "Person",
       "name": author

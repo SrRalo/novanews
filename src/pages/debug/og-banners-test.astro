@@ -1,0 +1,146 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import Head from '@/components/Head.astro'
+import { SITE } from '@/consts'
+
+const posts = [
+  {
+    slug: 'blockchain-2025-casos-de-usos-reales-aparte-de-las-criptomonedas',
+    title: 'Blockchain en 2025: Casos de Uso Reales',
+    image: 'blockchain-banner.jpg',
+    imageType: 'static'
+  },
+  {
+    slug: 'ia-generativa-guia-completa-de-tecnologias-y-aplicaciones-practicas-en-2025',
+    title: 'IA Generativa: Guía Completa 2025',
+    image: 'ia-generativa-banner.jpg',
+    imageType: 'static'
+  },
+  {
+    slug: 'top-herramientas-gratuitas-de-inteligencia-artificial',
+    title: 'Top Herramientas Gratuitas de IA',
+    image: 'herramientas-ia-banner.jpg',
+    imageType: 'static'
+  },
+  {
+    slug: 'ia-predice-psg-vs-real-madrid',
+    title: 'La IA Predice PSG vs Real Madrid',
+    image: '_astro/banner.Dyt9SQLt.png',
+    imageType: 'processed'
+  }
+]
+
+const cacheBuster = Date.now()
+---
+
+<Layout>
+  <Head slot="head" 
+    title="Debug: Open Graph Banners Test"
+    description="Página de debug para verificar que los banners de Open Graph se muestren correctamente"
+  />
+  <main class="mx-auto max-w-4xl px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">🛠️ Debug: Open Graph Banners Test</h1>
+    
+    <div class="mb-8 p-6 bg-gray-100 dark:bg-gray-800 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">🔗 Enlaces para validadores:</h2>
+      <ul class="space-y-2">
+        <li><a href="https://developers.facebook.com/tools/debug/" target="_blank" class="text-blue-600 hover:underline">🔍 Facebook Open Graph Debugger</a></li>
+        <li><a href="https://cards-dev.twitter.com/validator" target="_blank" class="text-blue-600 hover:underline">🐦 Twitter Card Validator</a></li>
+        <li><a href="https://www.linkedin.com/post-inspector/" target="_blank" class="text-blue-600 hover:underline">💼 LinkedIn Post Inspector</a></li>
+      </ul>
+    </div>
+
+    <div class="space-y-8">
+      {posts.map((post) => (
+        <div class="border rounded-lg p-6 bg-white dark:bg-gray-900 shadow-sm">
+          <h2 class="text-2xl font-semibold mb-4">{post.title}</h2>
+          
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-lg font-medium mb-2">📱 Vista previa de la imagen:</h3>
+              <img 
+                src={post.imageType === 'static' 
+                  ? `${SITE.href.replace(/\/$/, '')}/og-images/${post.image}?v=${cacheBuster}`
+                  : `${SITE.href.replace(/\/$/, '')}/${post.image}?v=${cacheBuster}`
+                }
+                alt={post.title}
+                class="w-full border rounded-lg"
+                style="max-width: 400px; height: auto;"
+              />
+            </div>
+            
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-medium text-sm text-gray-600 dark:text-gray-400 mb-1">🔗 URL del Post:</h4>
+                <code class="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm break-all">
+                  {`${SITE.href}blog/${post.slug}/`}
+                </code>
+                <a 
+                  href={`/blog/${post.slug}/`}
+                  target="_blank"
+                  class="inline-block mt-1 text-blue-600 hover:underline text-sm"
+                >
+                  → Abrir post
+                </a>
+              </div>
+              
+              <div>
+                <h4 class="font-medium text-sm text-gray-600 dark:text-gray-400 mb-1">🖼️ URL de la Imagen:</h4>
+                <code class="block p-2 bg-gray-100 dark:bg-gray-800 rounded text-sm break-all">
+                  {post.imageType === 'static' 
+                    ? `${SITE.href.replace(/\/$/, '')}/og-images/${post.image}`
+                    : `${SITE.href.replace(/\/$/, '')}/${post.image}`
+                  }
+                </code>
+                <a 
+                  href={post.imageType === 'static' ? `/og-images/${post.image}` : `/${post.image}`}
+                  target="_blank"
+                  class="inline-block mt-1 text-blue-600 hover:underline text-sm"
+                >
+                  → Abrir imagen directa
+                </a>
+                {post.imageType === 'processed' && (
+                  <div class="mt-1 text-xs text-gray-500">
+                    ⚙️ Imagen procesada por Astro desde el frontmatter del post
+                  </div>
+                )}
+              </div>
+              
+              <div>
+                <h4 class="font-medium text-sm text-gray-600 dark:text-gray-400 mb-1">🧪 Meta Tags del Post:</h4>
+                <div class="text-xs space-y-1 text-gray-700 dark:text-gray-300">
+                  <div>✅ og:image</div>
+                  <div>✅ og:image:width (1200)</div>
+                  <div>✅ og:image:height (630)</div>
+                  <div>✅ twitter:card (summary_large_image)</div>
+                  <div>✅ twitter:image</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-12 p-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">⚠️ Problemas comunes y soluciones:</h2>
+      <ul class="space-y-2 text-sm">
+        <li><strong>🔄 Cache de redes sociales:</strong> Facebook puede tardar hasta 24 horas en actualizar. Usa el debugger para forzar actualización.</li>
+        <li><strong>📐 Tamaño de imagen:</strong> Las imágenes deben ser mínimo 1200x630px para mejores resultados.</li>
+        <li><strong>🌐 Accesibilidad:</strong> Las imágenes deben ser accesibles públicamente (sin autenticación).</li>
+        <li><strong>📝 Meta tags:</strong> Verifica que og:image y twitter:image apunten a la misma URL.</li>
+      </ul>
+    </div>
+
+    <div class="mt-8 p-6 bg-green-50 dark:bg-green-900/20 rounded-lg">
+      <h2 class="text-xl font-semibold mb-4">✅ Checklist de verificación:</h2>
+      <ul class="space-y-2 text-sm">
+        <li>☑️ Las imágenes se cargan directamente en el navegador</li>
+        <li>☑️ Las URLs de los posts contienen las meta tags correctas</li>
+        <li>☑️ Cache busting implementado con timestamp</li>
+        <li>☑️ Schema.org JSON-LD incluye la imagen correcta</li>
+        <li>☑️ Tamaño de imagen optimizado (1200x630)</li>
+      </ul>
+    </div>
+  </main>
+</Layout>
