@@ -6,7 +6,7 @@ export const SITE: Site = {
     'Mi blog personal sobre tecnología y desarrollo',
   href: 'https://novanews1.vercel.app/',
   author: 'srr',
-  locale: 'en-US',
+  locale: 'es-ES',
   featuredPostCount: 2,
   postsPerPage: 3,
 }
